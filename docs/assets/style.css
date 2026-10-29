@@ -22,18 +22,46 @@ body.is-home{max-width:none;margin:0}
 
 @media(max-height:500px) and (orientation:landscape){.is-home>.topbar{height:64px}.hero{padding:70px 6vw 64px;min-height:0}.hero h1{font-size:min(15vw,29dvh);margin:10px 0 14px}.hero blockquote{font-size:16px;max-width:600px}.hero .eyebrow{font-size:8px}.scroll-note{bottom:6px;font-size:9px;padding:8px}.scroll-note span{font-size:18px}}
 
-/* A full-height sheet of projects slides over the pinned opening photograph. */
-.is-home #content{position:relative;isolation:isolate}
-.is-home .hero{position:sticky;top:0;z-index:0}
-.is-home .collections{position:relative;z-index:1;margin:0;min-height:100vh;min-height:100dvh;padding:64px 5vw 110px;background:var(--bg);box-shadow:0 -24px 70px #0005;scroll-margin-top:0}
-.is-home .collections .chapter-heading{border-top:0;padding-top:0}
-@supports (animation-timeline:scroll()){
- .is-home .hero-image{animation:cover-depth linear both;animation-timeline:scroll(root block);animation-range:0 100dvh}
- .is-home .hero-words{animation:cover-words linear both;animation-timeline:scroll(root block);animation-range:0 75dvh}
- .is-home .scroll-note{animation:cover-cue linear both;animation-timeline:scroll(root block);animation-range:0 25dvh}
-}
-@keyframes cover-depth{from{transform:scale(1);filter:brightness(1)}to{transform:scale(1.06);filter:brightness(.55)}}
-@keyframes cover-words{from{transform:translateY(0);opacity:1}to{transform:translateY(-45px);opacity:0}}
-@keyframes cover-cue{from{opacity:1}to{opacity:0}}
-@media(max-width:680px){.is-home .collections{padding:40px 6vw 65px}}
-@media(prefers-reduced-motion:reduce){.is-home .hero{position:relative}.is-home .collections{box-shadow:none}.is-home .hero-image,.is-home .hero-words,.is-home .scroll-note{animation:none!important}}
+/* A continuous page: one complete photographic screen per project. */
+.is-home .collections{margin:0;padding:0;scroll-margin-top:0}
+.project-screen{position:relative;margin:0;min-height:100vh;min-height:100dvh;background:var(--bg)}
+.project-link{position:relative;isolation:isolate;display:grid;place-items:center;min-height:100vh;min-height:100dvh;padding:90px 6vw 100px;overflow:hidden;color:#fff}
+.project-image{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;object-position:center}
+.project-link:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,#0003,#0004 50%,#0008);pointer-events:none}
+.project-words{width:100%;text-align:center;text-shadow:0 2px 25px #0007}
+.project-words .eyebrow{color:#eee9e1}
+.project-words h2{font:normal clamp(48px,10vw,170px)/1.05 Georgia,'Times New Roman',serif;letter-spacing:-.045em;max-width:16ch;margin:24px auto 30px;overflow-wrap:anywhere;text-wrap:balance}
+.project-words blockquote{font:italic clamp(18px,1.65vw,26px)/1.55 Georgia,serif;max-width:620px;margin:0 auto;color:#f4f0e9;text-wrap:balance;overflow-wrap:anywhere}
+.project-open{position:absolute;bottom:max(32px,env(safe-area-inset-bottom));left:0;right:0;text-align:center;font-size:10px;letter-spacing:.16em;padding:14px;text-shadow:0 1px 10px #000}
+.project-link:focus-visible{outline-offset:-8px}
+.is-home .collections>.empty{margin:0;padding:60px 6vw;min-height:100vh;min-height:100dvh}
+@media(max-width:680px){.project-link{padding:85px 6vw 95px}.project-words h2{font-size:clamp(42px,13vw,88px);margin:22px auto 26px}.project-words blockquote{font-size:18px;max-width:330px}.project-words .eyebrow{font-size:9px}.project-open{font-size:9px}}
+@media(max-height:500px) and (orientation:landscape){.project-link{padding:55px 6vw 65px}.project-words h2{font-size:min(9vw,21dvh);margin:14px auto 16px;max-width:24ch}.project-words blockquote{font-size:16px}.project-words .eyebrow{font-size:8px}.project-open{bottom:8px;font-size:9px}}
+
+/* Fullscreen chapters, native touch scrolling and soft text fade. */
+[hidden]{display:none!important}
+body.is-home{overflow:hidden;height:100dvh}
+.is-home>.topbar{position:fixed;z-index:3;pointer-events:none}
+.is-home>.topbar a,.is-home>.topbar button{pointer-events:auto}
+.top-label{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:55vw}
+.is-home #content{position:relative;height:100vh;height:100dvh;overflow-y:auto;overflow-x:hidden;scroll-snap-type:y mandatory;scroll-behavior:smooth;overscroll-behavior-y:contain;scrollbar-width:none}
+.is-home #content::-webkit-scrollbar{display:none}
+.is-home .hero,.is-home .project-screen,.is-home .collections>.empty{height:100vh;height:100dvh;min-height:100dvh;scroll-snap-align:start;scroll-snap-stop:always}
+.is-home .project-link{height:100%;min-height:100%;padding-bottom:120px}
+.is-home .hero{padding-bottom:120px}
+.is-home>footer{display:none}
+.hero-words,.project-words{will-change:opacity,transform}
+.project-open,.scroll-note{bottom:max(76px,calc(env(safe-area-inset-bottom) + 68px))}
+.page-controls{position:fixed;bottom:max(17px,env(safe-area-inset-bottom));right:5vw;z-index:3;display:flex;align-items:center;gap:10px;color:white;text-shadow:0 1px 8px #000}
+.page-controls span{font:10px Arial,sans-serif;letter-spacing:.18em;margin-right:10px}
+.page-controls button{border:1px solid #ffffff65;background:#10121155;backdrop-filter:blur(8px);border-radius:50%;width:44px;height:44px;font-size:19px}
+.page-controls button:disabled{opacity:.3;cursor:default}
+.menu-heading{font:9px Arial,sans-serif;letter-spacing:.18em;color:var(--muted);margin:35px 0 10px}
+.menu-cover{display:flex;justify-content:space-between;align-items:center;font:normal clamp(26px,4vw,42px) Georgia,serif;padding:12px 0 24px;border-bottom:1px solid var(--line)}
+.menu-cover span{font-size:22px;color:var(--muted)}
+#theme-menu{padding:0 0 35px}#theme-menu a{padding:16px 0;font-size:clamp(25px,3.5vw,38px)}
+#theme-menu a[aria-current],.menu-cover[aria-current]{color:var(--accent)}
+#theme-menu a[aria-current]:after{content:'●';font:8px Arial,sans-serif;margin-left:auto}
+@media(max-width:680px){.topbar{gap:18px}.top-label{font-size:8px;max-width:48vw}.menu-icon{margin-left:9px}.page-controls{right:6vw}}
+@media(max-height:500px) and (orientation:landscape){.is-home .hero{padding:62px 6vw 110px}.is-home .project-link{padding:62px 6vw 110px}.hero h1{font-size:min(15vw,25dvh);margin:8px 0 12px}.project-words h2{font-size:18dvh;margin:10px auto}.hero blockquote,.project-words blockquote{font-size:14px}.page-controls{bottom:8px}.project-open,.scroll-note{bottom:55px}.project-open{padding:8px}}
+@media(prefers-reduced-motion:reduce){.is-home #content{scroll-behavior:auto}.hero-words,.project-words{will-change:auto}}

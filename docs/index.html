@@ -15,21 +15,24 @@
   <a class="skip" href="#content">Aller au contenu</a>
   <header class="topbar">
     <a href="#" class="signature" aria-label="Nicolas Schneider — Accueil">NS<span class="signature-dot">.</span></a>
-    <span class="top-label">PHOTOGRAPHIE</span>
-    <button id="menu-open" class="text-button" aria-haspopup="dialog">Thèmes <span class="menu-icon" aria-hidden="true">☰</span></button>
+    <span class="top-label" id="current-section">PAGE DE GARDE</span>
+    <button id="menu-open" class="text-button" aria-haspopup="dialog">Menu <span class="menu-icon" aria-hidden="true">☰</span></button>
   </header>
   <main id="content" tabindex="-1">
     <p class="loading" role="status">Ouverture de la galerie…</p>
   </main>
+  <nav class="page-controls" id="page-controls" aria-label="Parcourir les écrans" hidden><span id="page-position">00</span><button id="page-prev" aria-label="Écran précédent">↑</button><button id="page-next" aria-label="Écran suivant">↓</button></nav>
   <footer>
     <a class="artist" href="#">Nicolas Schneider</a>
     <a id="contact" href="mailto:nls.schneider@proton.me">Entrer en contact <span aria-hidden="true">↗</span></a>
     <span class="copyright">© <span id="year"></span> · Tous droits réservés</span>
   </footer>
   <dialog id="menu" aria-labelledby="menu-title">
-    <div class="dialog-top"><span class="eyebrow" id="menu-title">EXPLORER LES THÈMES</span><button class="text-button" id="menu-close" autofocus>Fermer ×</button></div>
+    <div class="dialog-top"><span class="eyebrow" id="menu-title">EXPLORER EVOLUTION</span><button class="text-button" id="menu-close" autofocus>Fermer ×</button></div>
+    <p class="menu-heading">ACCUEIL</p><a id="menu-cover" class="menu-cover" href="#">Page de garde <span>↗</span></a>
+    <p class="menu-heading">THÈMES / PROJETS</p>
     <nav id="theme-menu" aria-label="Thèmes"></nav>
-    <a class="menu-home" href="#">Retour à l’accueil ↗</a>
+    <a class="menu-home" href="mailto:nls.schneider@proton.me">Entrer en contact ↗</a>
   </dialog>
   <dialog id="viewer" aria-label="Photographie en plein écran">
     <div class="viewer-bar"><span id="viewer-count" aria-live="polite"></span><button id="viewer-close" class="text-button" autofocus>Fermer ×</button></div>
