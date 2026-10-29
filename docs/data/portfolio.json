@@ -1,0 +1,159 @@
+{
+  "version": 1,
+  "site": {
+    "title": "evolution",
+    "artist": "Nicolas Schneider",
+    "quote": "You have to take a little risk, or you risk nothing happening.",
+    "email": "nls.schneider@proton.me"
+  },
+  "albums": [
+    {
+      "id": "mvt985de-5edff753e8c8a6ebefb4007580ba1909",
+      "title": "Street Revolt",
+      "quote": "In terms of the spaceship Earth, the wrong crew is in command, and it's time for a mutiny",
+      "cover": "mvt99bgn-25914cdf4f8a58ae52f184c813db1507",
+      "photos": [
+        {
+          "id": "mvt996m9-344110aeadc717daaa0c479247a6027d",
+          "src": "media/mvt996m9-344110aeadc717daaa0c479247a6027d.jpg",
+          "thumb": "media/mvt996m9-344110aeadc717daaa0c479247a6027d-thumb.jpg",
+          "width": 1600,
+          "height": 2400
+        },
+        {
+          "id": "mvt9968e-f64eca9b29da80effb90ee68ef22085c",
+          "src": "media/mvt9968e-f64eca9b29da80effb90ee68ef22085c.jpg",
+          "thumb": "media/mvt9968e-f64eca9b29da80effb90ee68ef22085c-thumb.jpg",
+          "width": 1600,
+          "height": 2400
+        },
+        {
+          "id": "mvt996wx-aaa714d8bcf1bce75327b1c7f37e987a",
+          "src": "media/mvt996wx-aaa714d8bcf1bce75327b1c7f37e987a.jpg",
+          "thumb": "media/mvt996wx-aaa714d8bcf1bce75327b1c7f37e987a-thumb.jpg",
+          "width": 1600,
+          "height": 2400
+        },
+        {
+          "id": "mvt9978a-0bc63cce4ea1d1f16c602686d27f207c",
+          "src": "media/mvt9978a-0bc63cce4ea1d1f16c602686d27f207c.jpg",
+          "thumb": "media/mvt9978a-0bc63cce4ea1d1f16c602686d27f207c-thumb.jpg",
+          "width": 1600,
+          "height": 2400
+        },
+        {
+          "id": "mvt995x2-a2c8eb06931fa0c57fa3f79c6f33ac94",
+          "src": "media/mvt995x2-a2c8eb06931fa0c57fa3f79c6f33ac94.jpg",
+          "thumb": "media/mvt995x2-a2c8eb06931fa0c57fa3f79c6f33ac94-thumb.jpg",
+          "width": 1600,
+          "height": 2400
+        },
+        {
+          "id": "mvt997k3-9f0e097145c815679e16de4ed4b469a9",
+          "src": "media/mvt997k3-9f0e097145c815679e16de4ed4b469a9.jpg",
+          "thumb": "media/mvt997k3-9f0e097145c815679e16de4ed4b469a9-thumb.jpg",
+          "width": 2400,
+          "height": 1600
+        },
+        {
+          "id": "mvt997ua-5893ccff641508b4032cae85195982d9",
+          "src": "media/mvt997ua-5893ccff641508b4032cae85195982d9.jpg",
+          "thumb": "media/mvt997ua-5893ccff641508b4032cae85195982d9-thumb.jpg",
+          "width": 2400,
+          "height": 1600
+        },
+        {
+          "id": "mvt99865-0d328388ae59370451681cd5582ed64e",
+          "src": "media/mvt99865-0d328388ae59370451681cd5582ed64e.jpg",
+          "thumb": "media/mvt99865-0d328388ae59370451681cd5582ed64e-thumb.jpg",
+          "width": 1600,
+          "height": 2400
+        },
+        {
+          "id": "mvt998kz-8a1476c977d26c30705de4c1beabfdf1",
+          "src": "media/mvt998kz-8a1476c977d26c30705de4c1beabfdf1.jpg",
+          "thumb": "media/mvt998kz-8a1476c977d26c30705de4c1beabfdf1-thumb.jpg",
+          "width": 1600,
+          "height": 2400
+        },
+        {
+          "id": "mvt998sq-20668123933dad7c226eeeec30fc32c9",
+          "src": "media/mvt998sq-20668123933dad7c226eeeec30fc32c9.jpg",
+          "thumb": "media/mvt998sq-20668123933dad7c226eeeec30fc32c9-thumb.jpg",
+          "width": 1600,
+          "height": 2400
+        },
+        {
+          "id": "mvt9990y-f831f3557f2a86a2c7a5efad7df7976e",
+          "src": "media/mvt9990y-f831f3557f2a86a2c7a5efad7df7976e.jpg",
+          "thumb": "media/mvt9990y-f831f3557f2a86a2c7a5efad7df7976e-thumb.jpg",
+          "width": 1600,
+          "height": 2400
+        },
+        {
+          "id": "mvt999b6-fad26d4f0c12c55eec479077a1a70045",
+          "src": "media/mvt999b6-fad26d4f0c12c55eec479077a1a70045.jpg",
+          "thumb": "media/mvt999b6-fad26d4f0c12c55eec479077a1a70045-thumb.jpg",
+          "width": 2400,
+          "height": 1600
+        },
+        {
+          "id": "mvt999lu-9666aa7c95afd73cf2c870f347b0ab4c",
+          "src": "media/mvt999lu-9666aa7c95afd73cf2c870f347b0ab4c.jpg",
+          "thumb": "media/mvt999lu-9666aa7c95afd73cf2c870f347b0ab4c-thumb.jpg",
+          "width": 1600,
+          "height": 2400
+        },
+        {
+          "id": "mvt999w5-2e9185c264643a871d4b0161c0916866",
+          "src": "media/mvt999w5-2e9185c264643a871d4b0161c0916866.jpg",
+          "thumb": "media/mvt999w5-2e9185c264643a871d4b0161c0916866-thumb.jpg",
+          "width": 1600,
+          "height": 2400
+        },
+        {
+          "id": "mvt99bgn-25914cdf4f8a58ae52f184c813db1507",
+          "src": "media/mvt99bgn-25914cdf4f8a58ae52f184c813db1507.jpg",
+          "thumb": "media/mvt99bgn-25914cdf4f8a58ae52f184c813db1507-thumb.jpg",
+          "width": 2400,
+          "height": 1600
+        },
+        {
+          "id": "mvt99a50-7945bb69bbf2442a109f909deba3a038",
+          "src": "media/mvt99a50-7945bb69bbf2442a109f909deba3a038.jpg",
+          "thumb": "media/mvt99a50-7945bb69bbf2442a109f909deba3a038-thumb.jpg",
+          "width": 2400,
+          "height": 1600
+        },
+        {
+          "id": "mvt99ag7-9f1199c28d6f2f307624d9bb652910dd",
+          "src": "media/mvt99ag7-9f1199c28d6f2f307624d9bb652910dd.jpg",
+          "thumb": "media/mvt99ag7-9f1199c28d6f2f307624d9bb652910dd-thumb.jpg",
+          "width": 2400,
+          "height": 1600
+        },
+        {
+          "id": "mvt99apt-2af8eb1e3675815c722267f65c17f879",
+          "src": "media/mvt99apt-2af8eb1e3675815c722267f65c17f879.jpg",
+          "thumb": "media/mvt99apt-2af8eb1e3675815c722267f65c17f879-thumb.jpg",
+          "width": 2400,
+          "height": 1600
+        },
+        {
+          "id": "mvt99aws-a05d2558f9b4a8763c2f954d048e239b",
+          "src": "media/mvt99aws-a05d2558f9b4a8763c2f954d048e239b.jpg",
+          "thumb": "media/mvt99aws-a05d2558f9b4a8763c2f954d048e239b-thumb.jpg",
+          "width": 1600,
+          "height": 2400
+        },
+        {
+          "id": "mvt99b62-2b91ff75a9e18c22ef19b068579eb898",
+          "src": "media/mvt99b62-2b91ff75a9e18c22ef19b068579eb898.jpg",
+          "thumb": "media/mvt99b62-2b91ff75a9e18c22ef19b068579eb898-thumb.jpg",
+          "width": 1600,
+          "height": 2400
+        }
+      ]
+    }
+  ]
+}
