@@ -16,8 +16,13 @@ export function validatePortfolio(data){
     }
     if(a.photos.length&&!photoIds.has(a.cover))throw Error('Couverture invalide.');
   }
+  if(data.homePhoto!=null){const p=data.homePhoto;
+    if(!p||!ID.test(p.id)||!PATH.test(p.src)||!PATH.test(p.thumb)||p.src===p.thumb||paths.has(p.src)||!Number.isInteger(p.width)||!Number.isInteger(p.height)||p.width<1||p.height<1||p.width>2400||p.height>2400)throw Error('Photo de la page de garde invalide.');
+  }
   return data;
 }
 export function visibleAlbums(data){return data.albums.filter(a=>a.photos.length>0);}
 export function coverPhoto(album){return album.photos.find(p=>p.id===album.cover)||album.photos[0];}
 export function routeAlbum(hash,albums){if(!hash.startsWith('#theme/'))return null;try{return albums.find(a=>a.id===decodeURIComponent(hash.slice(7)))||null;}catch{return null;}}
+
+export function homePhoto(data){return data.homePhoto||coverPhoto(visibleAlbums(data)[0]||{photos:[]});}

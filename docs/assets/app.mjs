@@ -1,4 +1,4 @@
-import{validatePortfolio,visibleAlbums,coverPhoto,routeAlbum}from'./model.mjs';
+import{validatePortfolio,visibleAlbums,coverPhoto,routeAlbum,homePhoto}from'./model.mjs';
 const $=s=>document.querySelector(s),content=$('#content'),menu=$('#menu'),viewer=$('#viewer');
 let data,albums=[],activePhotos=[],activeIndex=0;
 function el(tag,cls,text){const e=document.createElement(tag);if(cls)e.className=cls;if(text!==undefined)e.textContent=text;return e;}
@@ -6,18 +6,18 @@ function photo(p,lazy=true){const i=el('img');i.src=p.src;i.srcset=`${p.thumb} $
 function anchor(hash,cls,text){const a=el('a',cls,text);a.href=hash;return a;}
 function quote(text,cls=''){return el('blockquote',cls,text);}
 function home(){
- const hero=el('section','hero enter');hero.append(el('div','eyebrow',`${data.site.artist} — EXPLORATIONS PHOTOGRAPHIQUES`),el('h1','',data.site.title));
- const bottom=el('div','hero-bottom');bottom.append(quote(data.site.quote));
- const scroll=anchor('#collections','scroll-note','EXPLORER LES THÈMES');scroll.append(el('span','','↓'));bottom.append(scroll);hero.append(bottom);content.append(hero);
- if(albums.length){const a=albums[0],lead=anchor(`#theme/${a.id}`,'lead-photo');lead.style.display='block';lead.setAttribute('aria-label',`Explorer ${a.title}`);lead.append(photo(coverPhoto(a),false));const label=el('div','lead-label');label.append(el('strong','',a.title),el('span','','DÉCOUVRIR ↗'));lead.append(label);content.append(lead);}else content.append(el('div','horizon'));
- const section=el('section','collections');section.id='collections';const heading=el('div','chapter-heading');heading.append(el('h2','','Une collection de regards'),el('span','',`${String(albums.length).padStart(2,'0')} THÈMES`));section.append(heading);
+ const hero=el('section','hero');hero.setAttribute('aria-label','Accueil');
+ const cover=homePhoto(data);if(cover){const image=photo(cover,false);image.className='hero-image';image.sizes='100vw';image.setAttribute('fetchpriority','high');hero.append(image);}
+ const words=el('div','hero-words');words.append(el('div','eyebrow',data.site.artist),el('h1','',data.site.title),quote(data.site.quote));hero.append(words);
+ const scroll=anchor('#collections','scroll-note','THÈMES / PROJETS');scroll.append(el('span','','↓'));hero.append(scroll);content.append(hero);
+ const section=el('section','collections');section.id='collections';const heading=el('div','chapter-heading');heading.append(el('h2','','Thèmes / Projets'),el('span','',`${String(albums.length).padStart(2,'0')} THÈMES`));section.append(heading);
  if(albums.length){const grid=el('div','theme-grid');albums.forEach((a,index)=>{const card=anchor(`#theme/${a.id}`,'theme-card');const cover=el('div','theme-cover');cover.append(photo(coverPhoto(a)));const meta=el('div','theme-meta');meta.append(el('span','theme-number',String(index+1).padStart(2,'0')),el('h3','',a.title),el('span','theme-arrow','↗'));card.append(cover,meta);if(a.quote)card.append(el('p','theme-quote',a.quote));grid.append(card);});section.append(grid);}else{const empty=el('div','empty');empty.append(el('p','','Le regard en mouvement.'),el('span','','PREMIÈRES SÉRIES À VENIR'));section.append(empty);}
  content.append(section);document.title=`${data.site.title} — ${data.site.artist}`;
 }
 function albumPage(album){const head=el('section','album-head enter');head.append(anchor('#','back','← Tous les thèmes'),el('span','eyebrow',`${String(albums.indexOf(album)+1).padStart(2,'0')} / ${String(albums.length).padStart(2,'0')} — ${album.photos.length} PHOTOGRAPHIES`),el('h1','',album.title));if(album.quote)head.append(quote(album.quote));content.append(head);
  const grid=el('section','photos');grid.setAttribute('aria-label',album.title);album.photos.forEach((p,index)=>{const button=el('button','photo-button');button.setAttribute('aria-label',`Ouvrir la photographie ${index+1} — ${album.title}`);button.append(photo(p,index>1));button.addEventListener('click',()=>{activePhotos=album.photos;activeIndex=index;showPhoto();viewer.showModal();});grid.append(button);});content.append(grid);
  if(albums.length>1){const next=albums[(albums.indexOf(album)+1)%albums.length],link=anchor(`#theme/${next.id}`,'next-theme');link.append(el('span','eyebrow','POURSUIVRE L’EXPLORATION'),el('strong','',`${next.title} ↗`));content.append(link);}document.title=`${album.title} — ${data.site.title}`;}
-function render(){if(!data)return;menu.close();viewer.close();content.replaceChildren();const a=routeAlbum(location.hash,albums);if(a)albumPage(a);else home();if(location.hash==='#collections')$('#collections')?.scrollIntoView();else window.scrollTo({top:0,behavior:'instant'});}
+function render(){if(!data)return;menu.close();viewer.close();content.replaceChildren();const a=routeAlbum(location.hash,albums);document.body.classList.toggle('is-home',!a);if(a)albumPage(a);else home();if(location.hash==='#collections')$('#collections')?.scrollIntoView();else window.scrollTo({top:0,behavior:'instant'});}
 function showPhoto(){const p=activePhotos[activeIndex],i=$('#viewer-image');i.src=p.src;i.alt=`Photographie ${activeIndex+1} de ${data.site.artist}`;$('#viewer-count').textContent=`${String(activeIndex+1).padStart(2,'0')} / ${String(activePhotos.length).padStart(2,'0')}`;$('#previous').disabled=activeIndex===0;$('#next').disabled=activeIndex===activePhotos.length-1;}
 function move(delta){if(activeIndex+delta>=0&&activeIndex+delta<activePhotos.length){activeIndex+=delta;showPhoto();}}
 $('#menu-open').onclick=()=>menu.showModal();$('#menu-close').onclick=()=>menu.close();$('#menu').addEventListener('click',e=>{if(e.target.closest('a'))menu.close();});$('#viewer-close').onclick=()=>viewer.close();$('#previous').onclick=()=>move(-1);$('#next').onclick=()=>move(1);viewer.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'){e.preventDefault();move(-1);}if(e.key==='ArrowRight'){e.preventDefault();move(1);}});
